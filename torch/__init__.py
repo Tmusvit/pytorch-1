@@ -1530,6 +1530,9 @@ class _TorchCompileInductorWrapper:
 
         return compile_fx(model_, inputs_, config_patches=self.config)
 
+    def reset(self):
+        torch._inductor.cudagraph_trees.reset_cudagraph_trees()
+
 
 def compile(model: Optional[Callable] = None, *,
             fullgraph: builtins.bool = False,
